@@ -11,13 +11,13 @@ const dict = new ReactiveDict('dict');
 Meteor.subscribe('resolutions');
 
 Template.body.helpers({
-  resolutions: () => {
+  resolutions() {
     if (dict.get('hideFinished')) {
       return Resolutions.find({ checked: { $ne: true } });
     }
     return Resolutions.find();
   },
-  hideFinished: () => dict.get('hideFinished'),
+  hideFinished() { dict.get('hideFinished'); },
 });
 
 Template.body.events({
@@ -38,12 +38,21 @@ Template.body.events({
   },
 });
 
+Template.resolution.helpers({
+  isOwner() {
+    return this.owner === Meteor.userId();
+  },
+});
+
 Template.resolution.events({
   'click .toggle-checked'() {
     Meteor.call('updateResolution', this._id, !this.checked);
   },
   'click .delete'() {
     Meteor.call('deleteResolution', this._id);
+  },
+  'click .toggle-private'() {
+    Meteor.call('setPrivate', this._id, !this.private);
   },
 });
 
