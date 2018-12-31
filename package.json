@@ -12,13 +12,14 @@
   "eslintConfig": {
     "extends": "@meteorjs/eslint-config-meteor",
     "globals": {
-      "Meteor": true, 
+      "Meteor": true,
       "describe": true,
       "it": true
     }
   },
   "dependencies": {
     "@babel/runtime": "^7.1.5",
+    "bcrypt": "^3.0.3",
     "meteor-node-stubs": "^0.4.1"
   },
   "meteor": {
