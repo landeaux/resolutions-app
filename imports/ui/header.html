@@ -2,10 +2,13 @@
   <header>
     <h1>Monthly Resolutions</h1>
     
+    {{> loginButtons}}
+
     <label class="hide-finished">
       <input type="checkbox" checked="{{hideFinished}}">
       Hide Finished Resolutions
     </label>
+
     {{#if currentUser}}
       <form class="new-resolution">
         <input type="text" name="title" placeholder="A new resolution">
