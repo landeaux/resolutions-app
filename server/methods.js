@@ -5,6 +5,7 @@ import { Resolutions } from '../imports/api/resolutions';
 Meteor.methods({
   addResolution: (title) => {
     check(title, String);
+
     Resolutions.insert({
       title,
       createdAt: new Date(),

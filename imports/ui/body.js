@@ -12,22 +12,23 @@ const dict = new ReactiveDict('dict');
 
 Meteor.subscribe('resolutions');
 
-Template.body.helpers({
+Template.header.helpers({
   hideFinished() { dict.get('hideFinished'); },
 });
 
-Template.body.events({
+Template.header.events({
   'submit .new-resolution'(event) {
-    const e = event;
-    const title = e.target.title.value;
+    // Prevent default browser form submit
+    event.preventDefault();
+
+    // Get value from form element
+    const { target } = event;
+    const title = target.title.value;
 
     Meteor.call('addResolution', title);
 
     // clear the form
-    e.target.title.value = '';
-
-    // keeps page from refreshing because of submit event
-    return false;
+    target.title.value = '';
   },
   'change .hide-finished'(event) {
     dict.set('hideFinished', event.target.checked);
