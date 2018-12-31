@@ -38,9 +38,9 @@ Template.header.events({
 Template.resolutions.helpers({
   resolutions() {
     if (dict.get('hideFinished')) {
-      return Resolutions.find({ checked: { $ne: true } });
+      return Resolutions.find({ checked: { $ne: true } }, { sort: { createdAt: -1 } });
     }
-    return Resolutions.find();
+    return Resolutions.find({}, { sort: { createdAt: -1 } });
   },
 });
 
