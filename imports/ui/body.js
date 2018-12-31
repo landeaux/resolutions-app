@@ -1,6 +1,5 @@
 import { Meteor } from 'meteor/meteor';
 import { Template } from 'meteor/templating';
-import { Accounts } from 'meteor/accounts-base';
 import { ReactiveDict } from 'meteor/reactive-dict'; // for sessions vars
 import { Resolutions } from '../api/resolutions';
 
@@ -63,8 +62,4 @@ Template.resolution.events({
   'click .toggle-private'() {
     Meteor.call('setPrivate', this._id, !this.private);
   },
-});
-
-Accounts.ui.config({
-  passwordSignupFields: 'USERNAME_ONLY',
 });
