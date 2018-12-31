@@ -14,6 +14,9 @@ Meteor.subscribe('resolutions');
 
 Template.header.helpers({
   hideFinished() { dict.get('hideFinished'); },
+  unfinishedCount() {
+    return Resolutions.find({ checked: { $ne: true } }).count();
+  },
 });
 
 Template.header.events({
