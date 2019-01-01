@@ -29,7 +29,7 @@ Meteor.methods({
 
     const res = Resolutions.findOne(id);
 
-    if (res.owner !== Meteor.userId()) {
+    if (res.private && res.owner !== Meteor.userId()) {
       throw new Meteor.Error('not-authorized');
     }
 
