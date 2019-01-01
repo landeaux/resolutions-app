@@ -9,7 +9,9 @@ import './resolutions.html';
 
 const dict = new ReactiveDict('dict');
 
-Meteor.subscribe('resolutions');
+Template.body.onCreated(function bodyOnCreated() {
+  Meteor.subscribe('resolutions');
+});
 
 Template.header.helpers({
   hideFinished() { dict.get('hideFinished'); },

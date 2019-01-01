@@ -6,7 +6,7 @@ import './methods.js';
 Meteor.startup(() => {
   // code to run on server at startup
 
-  Meteor.publish('resolutions', function() {
+  Meteor.publish('resolutions', function resolutionsPublication() {
     return Resolutions.find({
       $or: [
         { private: { $ne: true } },
