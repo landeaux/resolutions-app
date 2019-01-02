@@ -29,7 +29,7 @@ Template.header.events({
     const { target } = event;
     const title = target.title.value;
 
-    Meteor.call('addResolution', title);
+    Meteor.call('resolutions.insert', title);
 
     // clear the form
     target.title.value = '';
@@ -56,12 +56,12 @@ Template.resolution.helpers({
 
 Template.resolution.events({
   'click .toggle-checked'() {
-    Meteor.call('updateResolution', this._id, !this.checked);
+    Meteor.call('resolutions.setChecked', this._id, !this.checked);
   },
   'click .delete'() {
-    Meteor.call('deleteResolution', this._id);
+    Meteor.call('resolutions.remove', this._id);
   },
   'click .toggle-private'() {
-    Meteor.call('setPrivate', this._id, !this.private);
+    Meteor.call('resolutions.setPrivate', this._id, !this.private);
   },
 });

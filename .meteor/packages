@@ -22,3 +22,4 @@ accounts-password
 accounts-ui
 check
 reactive-dict
+meteortesting:mocha
